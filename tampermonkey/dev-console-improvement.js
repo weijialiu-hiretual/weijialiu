@@ -34,7 +34,6 @@ function modifyElements() {
             dropdown.style.overflowX = 'hidden'; // 禁止横向滚动
             dropdown.style.flexDirection = 'column'; // 确保元素纵向排列
             dropdown.style.display = 'block'; // 确保元素纵向排列
-
         }
     }
 }
