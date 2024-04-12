@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name     Dev Console Improvement
-// @version  1
+// @version  1.0.1
 // @description  Improve dev console UI
 // @author   Veeja
 // @grant    none
 // @match https://dev-console.prod2.hireez.info/*
 // @match https://dev-console.stage2.hireez.info/*
 // @match https://dev-console.test2.hireez.info/*
+// @updateURL https://raw.githubusercontent.com/weijialiu-hiretual/weijialiu/main/tampermonkey/dev-console-improvement.js
 // ==/UserScript==
 
 class Logger {
