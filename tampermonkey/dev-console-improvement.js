@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name     Dev Console Improvement
-// @version  1.0.1
+// @version  1.0.2
 // @description  Improve dev console UI
 // @author   Veeja
 // @grant    none
