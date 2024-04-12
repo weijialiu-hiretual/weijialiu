@@ -31,7 +31,7 @@ const logger = new Logger('[Dev Console Improvement]');
  */
 function modifyFiledSelectorStyle() {
     try {
-        logger.info('[modifyFiledSelectorStyle] Start modifying...')
+        // logger.info('[modifyFiledSelectorStyle] Start modifying...')
         var labels = document.querySelectorAll('.dmc-label');
         for (var i = 0; i < labels.length; i++) {
             labels[i].style.fontFamily = 'monospace'; //更改字体为等宽字体
@@ -57,7 +57,7 @@ function modifyFiledSelectorStyle() {
                 dropdown.style.display = 'block'; // 确保元素纵向排列
             }
         }
-        logger.info('[modifyFiledSelectorStyle] Finish modifying...')
+        // logger.info('[modifyFiledSelectorStyle] Finish modifying...')
     } catch (e) {
         logger.error('[modifyFiledSelectorStyle] Error: ' + e);
     }
@@ -69,7 +69,7 @@ function modifyFiledSelectorStyle() {
  */
 function addHideSideButton() {
     try {
-        logger.info('[addHideSideButton] Start adding...')
+        // logger.info('[addHideSideButton] Start adding...')
         var sidebar = document.querySelector('aside');
         if (!sidebar) {
             logger.error('[addHideSideButton] Sidebar not found.');
@@ -77,7 +77,7 @@ function addHideSideButton() {
         }
         var existingToggleButton = document.querySelector('#toggleButton');
         if (existingToggleButton) {
-            logger.info('[addHideSideButton] Button already exists.');
+            // logger.info('[addHideSideButton] Button already exists.');
             return;
         }
 
@@ -120,7 +120,7 @@ function addHideSideButton() {
             }
         });
 
-        logger.info('[addHideSideButton] Finish adding...')
+        // logger.info('[addHideSideButton] Finish adding...')
     } catch (e) {
         logger.error('[addHideSideButton] Error: ' + e);
     }
@@ -131,7 +131,7 @@ function addHideSideButton() {
  */
 function limitTableMaxWidth() {
     try {
-        logger.info('[limitTableMaxWidth] Start limiting...')
+        // logger.info('[limitTableMaxWidth] Start limiting...')
 
         // 选择你需要修改的元素，这里选择的是所有的表格列元素
         var tableCells = document.querySelectorAll('td');
@@ -143,7 +143,7 @@ function limitTableMaxWidth() {
             tableCells[i].style.overflowX = 'hidden';
         }
 
-        logger.info('[limitTableMaxWidth] Finish limiting...')
+        // logger.info('[limitTableMaxWidth] Finish limiting...')
     } catch (e) {
         logger.error('[limitTableMaxWidth] Error: ' + e);
     }
@@ -154,7 +154,7 @@ function limitTableMaxWidth() {
  */
 function limitSqlTextHeight() {
     try {
-        logger.info('[limitSqlTextHeight] Start limiting...')
+        // logger.info('[limitSqlTextHeight] Start limiting...')
 
         var sqlTexts = document.querySelectorAll('.text-xs');
         // 遍历所有的text-xs类的元素
@@ -167,7 +167,7 @@ function limitSqlTextHeight() {
             // 设置等宽字体
             sqlTexts[j].style.fontFamily = '"Courier New", monospace';
         }
-        logger.info('[limitSqlTextHeight] Finish limiting...')
+        // logger.info('[limitSqlTextHeight] Finish limiting...')
     } catch (e) {
         logger.error('[limitSqlTextHeight] Error: ' + e);
     }
@@ -179,7 +179,7 @@ function limitSqlTextHeight() {
  */
 function addNewOption() {
     try {
-        logger.info('[addNewOption] Start adding...')
+        // logger.info('[addNewOption] Start adding...')
 
         var selects = document.querySelectorAll('.dmc-select');
         selects.forEach(function (select) {
@@ -198,7 +198,7 @@ function addNewOption() {
                 select.dispatchEvent(event);
             }
         });
-        logger.info('[addNewOption] Finish adding...')
+        // logger.info('[addNewOption] Finish adding...')
     } catch (e) {
         logger.error('[addNewOption] Error: ' + e);
     }
