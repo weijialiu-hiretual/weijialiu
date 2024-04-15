@@ -22,12 +22,26 @@ function modifyElements() {
     var skill = elements[1];
     var chat = elements[2];
 
-    // 将persona和skill的宽度设为50%
+    // 将persona和skill的宽度设为10%
     persona.style.width = '10%';
     skill.style.width = '10%';
 
-    // 将chat的宽度设为100%
+    // 将chat的宽度设为200%
     chat.style.width = '200%';
+
+    var chatBoxes = document.querySelectorAll('.chat-uikit-message-box-inner.chat-uikit-message-box-inner--whiteness');
+    chatBoxes.forEach(function(chatBox) {
+        if (chatBox.querySelector('button')) {
+            // 如果已经存在按钮，就不再添加
+            return;
+        }
+        var copyButton = document.createElement('button');
+        copyButton.innerText = '复制';
+        copyButton.onclick = function() {
+            GM_setClipboard(chatBox.innerText, 'text');
+        };
+        chatBox.appendChild(copyButton);
+    });
 }
 
 
