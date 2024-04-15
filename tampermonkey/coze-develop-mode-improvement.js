@@ -37,8 +37,13 @@ function modifyElements() {
         }
         var copyButton = document.createElement('button');
         copyButton.innerText = '复制';
+
         copyButton.onclick = function() {
-            GM_setClipboard(chatBox.innerText, 'text');
+            navigator.clipboard.writeText(chatBox.innerText).then(function() {
+                console.log('复制成功');
+            }, function(err) {
+                console.error('复制失败: ', err);
+            });
         };
         chatBox.appendChild(copyButton);
     });
