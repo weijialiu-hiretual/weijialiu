@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name     Coze Style Change
-// @version  1
+// @version  1.0.1
 // @description
 // @author   Veeja
 // @grant    none
@@ -12,23 +12,16 @@
  *
  */
 function modifyElements() {
-    var box = document.querySelectorAll('.qrPNrOyVEBA326VHThBn');
+    var box = document.querySelectorAll('.UMf9npeM8cVkDi0CDqZ0');
     // 修改 display 为 flex
     for (var i = 0; i < box.length; i++) {
         box[i].style.display = 'flex';
     }
 
-    var elements = document.querySelectorAll('.GgZHQbhCPZYqXVil_nkc')
+    // 修改左侧设置栏宽度
+    var elements = document.querySelectorAll('.IoQhh3vVUhwDTJi9EIDK')
     var persona = elements[0];
-    var skill = elements[1];
-    var chat = elements[2];
-
-    // 将persona和skill的宽度设为10%
-    persona.style.width = '10%';
-    skill.style.width = '10%';
-
-    // 将chat的宽度设为200%
-    chat.style.width = '200%';
+    persona.style.width = '20%';
 }
 
 
