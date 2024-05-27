@@ -5,6 +5,7 @@
 // @author   Veeja
 // @grant    none
 // @match https://www.coze.com/space/*
+// @updateURL https://raw.githubusercontent.com/weijialiu-hiretual/weijialiu/main/tampermonkey/coze-develop-mode-improvement.js
 // ==/UserScript==
 
 /**
@@ -28,25 +29,6 @@ function modifyElements() {
 
     // 将chat的宽度设为200%
     chat.style.width = '200%';
-
-    var chatBoxes = document.querySelectorAll('.chat-uikit-message-box-inner.chat-uikit-message-box-inner--whiteness');
-    chatBoxes.forEach(function(chatBox) {
-        if (chatBox.querySelector('button')) {
-            // 如果已经存在按钮，就不再添加
-            return;
-        }
-        var copyButton = document.createElement('button');
-        copyButton.innerText = '复制';
-
-        copyButton.onclick = function() {
-            navigator.clipboard.writeText(chatBox.innerText).then(function() {
-                console.log('复制成功');
-            }, function(err) {
-                console.error('复制失败: ', err);
-            });
-        };
-        chatBox.appendChild(copyButton);
-    });
 }
 
 
