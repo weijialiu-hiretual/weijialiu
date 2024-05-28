@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name     Coze Style Change
-// @version  1.0.1
+// @version  1.0.2
 // @description
 // @author   Veeja
 // @grant    none
