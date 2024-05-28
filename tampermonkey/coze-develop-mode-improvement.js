@@ -21,7 +21,7 @@ function modifyElements() {
     // 修改左侧设置栏宽度
     var elements = document.querySelectorAll('.IoQhh3vVUhwDTJi9EIDK')
     var persona = elements[0];
-    persona.style.width = '20%';
+    persona.style.width = '30%';
 }
 
 
