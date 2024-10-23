@@ -1,9 +1,9 @@
 author='weijia'
-ticket='CMR-9901'
-filename='mysql/hiretual/flyway/V112__CMR-9901.sql'
-sql='alter table EMAIL_THREAD
-add index idx_project_id(email_thread_project_id);'
-commit_message='Add index idx_project_id in EMAIL_THREAD table'
+ticket='CMR-9936'
+filename='mysql/hiretual/flyway/CMR-9936.sql'
+sql='EMAIL_THREAD_CANDIDATE
+ADD COLUMN sequence_step_count INT DEFAULT 0 NOT NULL'
+commit_message='Add column sequence_step_count in EMAIL_THREAD_CANDIDATE table'
 
 git checkout master
 git pull
@@ -14,28 +14,57 @@ git add $filename
 git commit -m "$ticket $commit_message"
 git push origin $author/$ticket --force
 
+
+#
+# to release
+#
 git checkout release
 git pull
 git checkout -b from-release/$author/$ticket
-# 获取 master 分支最近一个提交的哈希值
+# Get the hash value of the most recent commit on the ${author}/${ticket} branch
 LAST_COMMIT=$(git log $author/${ticket} -1 --format=format:%H)
 echo $LAST_COMMIT
-# 将 master 分支最近一个提交的内容 Cherry-pick 到 当前分支
+# Cherry-pick this commit to the current branch
 git cherry-pick $LAST_COMMIT
 git push origin from-release/$author/$ticket --force
 
+#
+# to develop
+#
 git checkout develop
 git pull
 git checkout -b from-develop/$author/$ticket
-# 获取 master 分支最近一个提交的哈希值
+
+# Get the hash value of the most recent commit on the ${author}/${ticket} branch
 LAST_COMMIT=$(git log $author/${ticket} -1 --format=format:%H)
 echo $LAST_COMMIT
-# 将 master 分支最近一个提交的内容 Cherry-pick 到 当前分支
+# Cherry-pick this commit to the current branch
 git cherry-pick $LAST_COMMIT
 git push origin from-develop/$author/$ticket --force
 
-# 输出三个PR的链接
-# https://github.com/HireTeamMate/databases/compare/master...weijia/CMR-9414
+echo "=========================== PR links ==========================="
+
+# Print the PR links
 echo "https://github.com/HireTeamMate/databases/compare/master...$author/$ticket"
 echo "https://github.com/HireTeamMate/databases/compare/release...from-release/$author/$ticket"
 echo "https://github.com/HireTeamMate/databases/compare/develop...from-develop/$author/$ticket"
+
+
+echo "=========================== Will create PRs by gh ==========================="
+
+# Create PRs
+master_pr_url=$(gh pr create --base master --head $author/$ticket --title "$ticket $commit_message" --body "")
+release_pr_url=$(gh pr create --base release --head from-release/$author/$ticket --title "$ticket $commit_message" --body "")
+develop_pr_url=$(gh pr create --base develop --head from-develop/$author/$ticket --title "$ticket $commit_message" --body "")
+
+# Print the PR links
+# print the CMR ticket https://hiretual.atlassian.net/browse/CMR-9936
+echo "https://hiretual.atlassian.net/browse/$ticket"
+
+# print the commit_message
+echo "$commit_message"
+
+# Print the PR links
+echo "-> master: $master_pr_url"
+echo "-> release: $release_pr_url"
+echo "-> develop: $develop_pr_url"
