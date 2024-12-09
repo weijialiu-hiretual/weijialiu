@@ -18,10 +18,13 @@ interface的示例:
  *       properties:
  *         id:
  *           type: number
+ *           description: id of the sample
  *         team_id:
  *           type: string
+ *           description: team id of the sample
  *         create_date:
  *           type: string
+ *           description: create date of the sample
  *           format: date-time
  */
 export interface SampleInterface {
@@ -43,7 +46,7 @@ export interface SampleInterface {
  *        properties:
  *          accountId:
  *            type: integer
- *            description:
+ *            description: account id
  *          jobType:
  *            $ref: '#/components/schemas/JobType'
  */
@@ -65,10 +68,12 @@ export interface BasicRefreshJob {
  *        properties:
  *          accountId:
  *            type: array
+ *            description: account id
  *            items:
  *              type: integer
  *          jobType:
  *            type: array
+ *            description: job type
  *            items:
  *              $ref: '#/components/schemas/JobType'
  */
@@ -110,8 +115,10 @@ export enum CAMPAIGN_STATUS_ENUM {
  *       properties:
  *         userId:
  *           type: string
+ *           description: user id
  *         steps:
  *           type: array
+ *           description: steps of the sequence
  *           items:
  *             oneOf:
  *                - $ref: '#/components/schemas/NewEmailCampaignTemplateStep'
@@ -136,6 +143,7 @@ export interface CreateNewSequenceTemplateV2Req {
  *             properties:
  *               threadId:
  *                 type: string
+ *                 description: thread id
  */
 export interface CreateReminderObj extends CreateReminderBase {
   threadId?: string;
@@ -148,7 +156,10 @@ export interface CreateReminderObj extends CreateReminderBase {
 
 swagger文档对于缩进和空行是非常敏感的，请确保你的文档是符合规范的。
 
+请为每个字段都书写description，请确保不要漏掉任何字段的description。
+
 当我给你一个类型定义后，你给出的结果应只包含swagger文档部分，以及第一行的类型定义，具体的字段部分请使用"..."省略掉。
+
 例如：
 
 ```
@@ -161,6 +172,7 @@ swagger文档对于缩进和空行是非常敏感的，请确保你的文档是�
  *       properties:
  *         id:
  *           type: number
+ *           description: id of the sample
  */
 export interface SampleInterface {
   ...
